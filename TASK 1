@@ -1,37 +1,54 @@
 import java.util.Scanner;
+
 public class JavaTestClass {
-    public static void main(String []arguments){
-    int operator,n1,n2;
-    System.out.println("1-Add\n 2-Subtract\n 3-Multiply\n 4-Divide");
-    System.out.print("choose operator :");
-    Scanner sc=new Scanner(System.in);
-    operator =sc.nextInt();
-    System.out.print("enter first number :");
-    n1=sc.nextInt();
-    System.out.print("enter first number :");
-    n2=sc.nextInt();
-
-    int result = 0;
-    switch(operator){
-        case 1 :
-           result = n1+n2;
-           break;
-
-        case 2 :
-            result =n1-n2;
-            break;
+    public static void main(String[] arguments) {
+        int operator, n1, n2;
+        System.out.println("1-Add\n2-Subtract\n3-Multiply\n4-Divide");
+        System.out.print("Choose operator: ");
         
-        case 3 :
-            result =n1*n2;
-            break;
-
-        case 4 :
-            result =n1/n2;
-            break;
+        Scanner sc = new Scanner(System.in);
+        operator = sc.nextInt();
         
-        default :
-            System.out.println("enter the operator is not valid");
+        System.out.print("Enter first number: ");
+        n1 = sc.nextInt();
+        
+        System.out.print("Enter second number: ");  // Fixed prompt
+        n2 = sc.nextInt();
+
+        int result = 0;
+        boolean validOperation = true;
+
+        switch (operator) {
+            case 1:
+                result = n1 + n2;
+                break;
+
+            case 2:
+                result = n1 - n2;
+                break;
+
+            case 3:
+                result = n1 * n2;
+                break;
+
+            case 4:
+                if (n2 == 0) {
+                    System.out.println("Error: Division by zero is not allowed.");
+                    validOperation = false;
+                } else {
+                    result = n1 / n2;
+                }
+                break;
+
+            default:
+                System.out.println("Error: Invalid operator selected.");
+                validOperation = false;
+        }
+
+        if (validOperation) {
+            System.out.println("Result is: " + result);
+        }
+
+        sc.close(); // Close the scanner
     }
-    System.out.println("result is " + result);
- }
 }
